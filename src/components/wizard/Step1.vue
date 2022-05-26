@@ -4,7 +4,6 @@ defineEmits<{
   (e: 'step', id: number): void
 }>()
 </script>
-
 <template>
   <div class="main-pane">
     <h1>Hello there</h1>
@@ -15,7 +14,6 @@ defineEmits<{
 
 <style scoped>
 @import '../../assets/base.css';
-
 
 p {
   font-size: 1.2rem;

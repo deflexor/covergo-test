@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Step1 from './wizard/Step1.vue'
 import Step2 from './wizard/Step2.vue'
+import Step3 from './wizard/Step3.vue'
 import {ref} from 'vue'
 
-const stepComponents = [null, Step1, Step2]
+const stepComponents = [null, Step1, Step2, Step3]
 
 const currentStep = ref(1)
 

@@ -1,28 +1,9 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { formData, cities, discounts } from '../../stores/form'
 import Button from '../common/Button.vue'
 defineEmits<{
   (e: 'step', id: number): void
 }>()
-
-const cities = [
-  { text: 'Hong Kong', value: 'Hong Kong' },
-  { text: 'Tokyo', value: 'Tokyo' },
-  { text: 'New York', value: 'New York' }
-]
-
-const discounts = [
-  "Standard",
-  "Safe (+250 HKD, 50%)",
-  "Super Safe (+375 HKD, 75%)"
-]
-
-const formData = reactive({
-  name: '',
-  age: null,
-  city: cities[0],
-  discount: 0
-})
 
 </script>
 
@@ -41,7 +22,7 @@ const formData = reactive({
       <label class="basic-input-label">
         <b>Where do you live</b>
         <select class="basic-input" v-model="formData.city">
-          <option v-for="o of cities" :value="o.text">{{o.text}}</option>
+          <option v-for="o of cities" :value="o">{{o.text}}</option>
         </select>
       </label>
       <label v-for="(d,i) of discounts" class="radio-input-label">
