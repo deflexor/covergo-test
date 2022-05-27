@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Button from '../common/Button.vue'
+import Button from "../common/Button.vue";
 defineEmits<{
-  (e: 'step', id: number): void
-}>()
+  (e: "step", id: number): void;
+}>();
 </script>
 <template>
   <div class="main-pane">
@@ -13,11 +13,10 @@ defineEmits<{
 </template>
 
 <style scoped>
-@import '../../assets/base.css';
+@import "../../assets/base.css";
 
 p {
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
-
 </style>

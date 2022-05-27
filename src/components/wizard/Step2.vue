@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { formData, formFilled, computedPremium, computedExtra, extraPremium, cities, premiumPackages } from '../../stores/form'
-import Button from '../common/Button.vue'
+import {
+  formData,
+  formFilled,
+  computedPremium,
+  extraPremium,
+  cities,
+  premiumPackages,
+} from "../../stores/form";
+import Button from "../common/Button.vue";
 defineEmits<{
-  (e: 'step', id: number): void
-}>()
-
+  (e: "step", id: number): void;
+}>();
 </script>
 
 <template>
@@ -13,23 +19,43 @@ defineEmits<{
     <form class="basic-form">
       <label class="basic-input-label">
         <b>Name</b>
-        <input type="text" class="basic-input" placeholder="Add text" maxlength="128" v-model="formData.name">
+        <input
+          type="text"
+          class="basic-input"
+          placeholder="Add text"
+          maxlength="128"
+          v-model="formData.name"
+        />
       </label>
       <label class="basic-input-label">
         <b class="">Age</b>
-        <input type="number" class="basic-input" placeholder="50" maxlength="10" v-model="formData.age">
+        <input
+          type="number"
+          class="basic-input"
+          placeholder="50"
+          maxlength="10"
+          v-model="formData.age"
+        />
       </label>
       <label class="basic-input-label">
         <b>Where do you live</b>
         <select class="basic-input" v-model="formData.city">
-          <option v-for="o of cities" :value="o">{{o.text}}</option>
+          <option v-for="o of cities" :key="o.text" :value="o">
+            {{ o.text }}
+          </option>
         </select>
       </label>
-      <label v-for="(d,i) of premiumPackages" class="radio-input-label">
-        <input type="radio" v-model="formData.package" :value="d" /> {{d.name}} (+{{extraPremium(d.value)}} {{formData.city.currency}}, {{d.value}}% )
+      <label
+        v-for="d of premiumPackages"
+        :key="d.name"
+        class="radio-input-label"
+      >
+        <input type="radio" v-model="formData.package" :value="d" />
+        {{ d.name }} (+{{ extraPremium(d.value) }} {{ formData.city.currency }},
+        {{ d.value }}% )
       </label>
       <div class="premium" v-if="computedPremium">
-        Your premium is: {{computedPremium}}
+        Your premium is: {{ computedPremium }}
       </div>
       <div class="premium0" v-else>
         Some form fields must be filled to calculate premium
@@ -44,7 +70,7 @@ defineEmits<{
 </template>
 
 <style scoped>
-@import '../../assets/base.css';
+@import "../../assets/base.css";
 
 .basic-form {
   display: flex;
@@ -74,5 +100,4 @@ defineEmits<{
   display: inline-block;
   width: 10px;
 }
-
 </style>

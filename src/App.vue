@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Wizard from './components/Wizard.vue'
-
+import Wizard from "./components/Wizard.vue";
 </script>
 
 <template>
@@ -8,7 +7,7 @@ import Wizard from './components/Wizard.vue'
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;

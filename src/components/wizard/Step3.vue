@@ -1,33 +1,38 @@
 <script setup lang="ts">
-import { formData, resetForm, computedPremium } from '../../stores/form'
-import Button from '../common/Button.vue'
+import { formData, resetForm, computedPremium } from "../../stores/form";
+import Button from "../common/Button.vue";
 defineEmits<{
-  (e: 'step', id: number): void
-}>()
-
+  (e: "step", id: number): void;
+}>();
 </script>
 
 <template>
   <div class="main-pane">
     <h1>Summary</h1>
     <div>
-      <h2 v-if="formData.name">{{formData.name}},</h2>
-      <div>Name: {{formData.name}}</div>
-      <div>Age: {{formData.age}}</div>
-      <div>Where do you live: {{formData.city.text}}</div>
-      <div>Package: {{formData.package.name}}</div>
-      <div>Premium: {{computedPremium}}</div>
+      <h2 v-if="formData.name">{{ formData.name }},</h2>
+      <div>Name: {{ formData.name }}</div>
+      <div>Age: {{ formData.age }}</div>
+      <div>Where do you live: {{ formData.city.text }}</div>
+      <div>Package: {{ formData.package.name }}</div>
+      <div>Premium: {{ computedPremium }}</div>
       <div class="btns">
         <Button light @click="$emit('step', 2)">Back</Button>
         <span class="sep1"></span>
-        <Button @click="resetForm(); $emit('step', 1)">Buy</Button>
+        <Button
+          @click="
+            resetForm();
+            $emit('step', 1);
+          "
+          >Buy</Button
+        >
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import '../../assets/base.css';
+@import "../../assets/base.css";
 
 .basic-form {
   display: flex;
@@ -51,5 +56,4 @@ defineEmits<{
   display: inline-block;
   width: 10px;
 }
-
 </style>

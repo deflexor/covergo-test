@@ -1,19 +1,21 @@
 <script setup lang="ts">
 // import { ref } from 'vue'
 defineProps<{
-  light?: boolean
-}>()
+  light?: boolean;
+}>();
 defineEmits<{
-  (e: 'click'): void
-}>()
+  (e: "click"): void;
+}>();
 </script>
 
 <template>
-  <button :class="['btn', light ? 'light' : 'dark']" @click="$emit('click')"><slot></slot></button>
+  <button :class="['btn', light ? 'light' : 'dark']" @click="$emit('click')">
+    <slot></slot>
+  </button>
 </template>
 
 <style scoped>
-@import '../../assets/base.css';
+@import "../../assets/base.css";
 
 .btn {
   display: inline-flex;
@@ -33,8 +35,8 @@ defineEmits<{
 }
 
 .light {
-    color: var(--color-text);
-    background-color: white;
+  color: var(--color-text);
+  background-color: white;
 }
 
 .btn.light::disabled {
@@ -42,8 +44,8 @@ defineEmits<{
 }
 
 .dark {
-    background-color: var(--vt-c-black);
-    color: var(--vt-c-white);
+  background-color: var(--vt-c-black);
+  color: var(--vt-c-white);
 }
 
 .btn.dark[disabled] {
@@ -51,5 +53,4 @@ defineEmits<{
   background-color: var(--vt-c-black-soft);
   cursor: default;
 }
-
 </style>
