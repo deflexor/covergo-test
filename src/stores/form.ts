@@ -42,6 +42,13 @@ export const formFilled = computed<boolean>(() => {
   );
 });
 
+export function setAge(
+  e: { target: { value: any } },
+  v = e.target.value
+): void {
+  formData.age = v === "" ? v : v >= 0 ? +v : Math.abs(+v);
+}
+
 const premium = computed<number>(() => {
   return 10 * (formData.age || 0) * formData.city.rate;
 });

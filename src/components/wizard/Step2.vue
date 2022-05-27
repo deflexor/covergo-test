@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  setAge,
   formData,
   formFilled,
   computedPremium,
@@ -33,8 +34,10 @@ defineEmits<{
           type="number"
           class="basic-input"
           placeholder="50"
-          maxlength="10"
+          min="1"
+          maxlength="4"
           v-model="formData.age"
+          @input="setAge"
         />
       </label>
       <label class="basic-input-label">
