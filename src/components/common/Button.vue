@@ -37,8 +37,19 @@ defineEmits<{
     background-color: white;
 }
 
+.btn.light::disabled {
+  color: var(--vt-c-divider-light-2);
+}
+
 .dark {
     background-color: var(--vt-c-black);
-    color: white;
+    color: var(--vt-c-white);
 }
+
+.btn.dark[disabled] {
+  color: var(--vt-c-gray);
+  background-color: var(--vt-c-black-soft);
+  cursor: default;
+}
+
 </style>

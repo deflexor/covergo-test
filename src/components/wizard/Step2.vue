@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formData, cities, discounts } from '../../stores/form'
+import { formData, formFilled, computedPremium, computedExtra, extraPremium, cities, premiumPackages } from '../../stores/form'
 import Button from '../common/Button.vue'
 defineEmits<{
   (e: 'step', id: number): void
@@ -25,16 +25,19 @@ defineEmits<{
           <option v-for="o of cities" :value="o">{{o.text}}</option>
         </select>
       </label>
-      <label v-for="(d,i) of discounts" class="radio-input-label">
-        <input type="radio" v-model="formData.discount" :value="i" /> {{d}}
+      <label v-for="(d,i) of premiumPackages" class="radio-input-label">
+        <input type="radio" v-model="formData.package" :value="d" /> {{d.name}} (+{{extraPremium(d.value)}} {{formData.city.currency}}, {{d.value}}% )
       </label>
-      <div class="premium">
-        Your premium is: 500 HKD
+      <div class="premium" v-if="computedPremium">
+        Your premium is: {{computedPremium}}
+      </div>
+      <div class="premium0" v-else>
+        Some form fields must be filled to calculate premium
       </div>
       <div class="btns">
         <Button light @click="$emit('step', 1)">Back</Button>
         <span class="sep1"></span>
-        <Button @click="$emit('step', 3)">Next</Button>
+        <Button @click="$emit('step', 3)" :disabled="!formFilled">Next</Button>
       </div>
     </form>
   </div>
@@ -53,6 +56,12 @@ defineEmits<{
   font-size: 1.5rem;
   padding: 40px 0;
   font-weight: 700;
+}
+
+.premium0 {
+  font-size: 1.3rem;
+  padding: 40px 0;
+  font-weight: normal;
 }
 
 .btns {
